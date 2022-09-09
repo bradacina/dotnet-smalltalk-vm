@@ -1,14 +1,15 @@
 namespace SmalltalkVM;
 
-public class MethodContext
+public class MethodContext : IContext
 {
-    public object Sender;
-    public int InstructionPointer;
-    public int StackPointer;
+    // Caller is the MethodContext or BlockContext from which this method was called
+    public IContext Caller { get; set; }
+    public int InstructionPointer { get; set; }
+    public int StackPointer { get; set; }
     public CompiledMethod Method;
-    public SObject Receiver;
-    public object[] Arguments;
-    public object[] Temporaries;
-    public object[] Stack;
+    public IObject Receiver;
+    public IObject[] Arguments;
+    public IObject[] Temporaries;
+    public IObject[] Stack { get; set; }
 
 }
